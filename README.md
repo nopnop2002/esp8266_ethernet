@@ -67,7 +67,7 @@ You can download from [here](https://github.com/d-a-v/W5500lwIP).
 
 # Selecting the Ethernet module
 
-By default the W5500 ethernet controller is selected.
+By default the W5500 ethernet module is selected.
 
 ```
 #include <W5500lwIP.h>
