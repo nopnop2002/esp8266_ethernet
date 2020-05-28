@@ -83,3 +83,7 @@ Using ENC28J60:
 ```
 #include <ENC28J60lwIP.h>
 ```
+
+# Limitations
+UDP reception does not work with the current core library.   
+This is probably not a driver issue, but a core library issue.   
