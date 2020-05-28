@@ -64,4 +64,22 @@ You can download from [here](https://github.com/d-a-v/W5500lwIP).
 
 (*) You can change.
 
+# Selecting the Ethernet type controller
 
+By default the W5500 ethernet controller is selected.
+
+```
+#include <W5500lwIP.h>
+```
+
+Using W5100:
+
+```
+#include <W5100lwIP.h>
+```
+
+Using ENC28J60:
+
+```
+#include <ENC28J60lwIP.h>
+```
