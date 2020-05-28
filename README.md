@@ -1,5 +1,6 @@
 # esp8266_ethernet
-Ethernet example using Ethernet drivers for lwIP on esp8266
+
+## Ethernet example using Ethernet drivers for lwIP on esp8266
 
 Arduino core for ESP8266 uses [lwip](https://savannah.nongnu.org/projects/lwip/) for TCP/IP protocol stack.
 
@@ -25,15 +26,16 @@ The hierarchy of programs that use WiFi is as follows:
 
 [This](https://github.com/d-a-v/W5500lwIP) driver replaces the WiFi driver with an Ethernet driver.
 
-+---------------+   
-|  Appilication |   
-+---------------+   
-|      API      |   
-+---------------+   
-|      lwip     |   
-+---------------+   
-|Ethernet Driver|   
-+---------------+   
-
+```
++---------------+
+|  Appilication |
++---------------+
+|      API      |
++---------------+
+|      lwip     |
++---------------+
+|Ethernet Driver|
++---------------+
+```
 
 This repository is a example of using Ethernet with ESP8266.
