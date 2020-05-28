@@ -86,5 +86,5 @@ Using ENC28J60:
 ```
 
 # Limitations
-UDP reception does not work with the current core library.   
+UDP receive is currently not working.   
 This is probably not a driver issue, but a core library issue.   
