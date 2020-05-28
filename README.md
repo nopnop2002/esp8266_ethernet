@@ -18,7 +18,7 @@ The hierarchy of programs that use WiFi is as follows:
 +---------------+
 |      lwip     |
 +---------------+
-| WiFi  Driver  |
+|  WiFi Driver  |
 +---------------+ 
 ```
 
