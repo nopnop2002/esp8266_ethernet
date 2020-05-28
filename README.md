@@ -50,7 +50,7 @@ SPI Ethernet module like this.
 - Latest of Arduino core for ESP8266.   
 I tested 2.7.1.   
 
-- Ethernet drivers for lwIP on esp8266.
+- Ethernet drivers for lwIP on esp8266.   
 You can download from [here](https://github.com/d-a-v/W5500lwIP).
 
 # Wireing
