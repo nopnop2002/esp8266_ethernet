@@ -14,7 +14,7 @@ The hierarchy of programs that use WiFi is as follows:
 +---------------+
 |  Application  |
 +---------------+
-|      API      |
+|  Network-API  |
 +---------------+
 |      lwip     |
 +---------------+
@@ -31,7 +31,7 @@ You can use Ethnernet with only a few changes.
 +---------------+
 |  Application  |
 +---------------+
-|      API      |
+|  Network-API  |
 +---------------+
 |      lwip     |
 +---------------+
