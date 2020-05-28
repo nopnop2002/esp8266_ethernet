@@ -41,7 +41,7 @@ The hierarchy of programs that use WiFi is as follows:
 This repository is a example of using Ethernet with ESP8266.
 
 # Hardware requiment
-SPI Ethernet module like this.
+SPI Ethernet module using this chip.
 - ENC28J60
 - W5100
 - W5500
@@ -64,7 +64,7 @@ You can download from [here](https://github.com/d-a-v/W5500lwIP).
 
 (*) You can change.
 
-# Selecting the Ethernet type controller
+# Selecting the Ethernet module
 
 By default the W5500 ethernet controller is selected.
 
