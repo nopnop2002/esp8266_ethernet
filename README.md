@@ -12,7 +12,7 @@ The hierarchy of programs that use WiFi is as follows:
 
 ```
 +---------------+
-|  Appilication |
+|  Application  |
 +---------------+
 |      API      |
 +---------------+
@@ -28,7 +28,7 @@ The hierarchy of programs that use WiFi is as follows:
 
 ```
 +---------------+
-|  Appilication |
+|  Application  |
 +---------------+
 |      API      |
 +---------------+
