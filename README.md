@@ -9,20 +9,29 @@ SDK:2.2.2-dev(38a443e)/Core:2.7.1=20701000/lwIP:STABLE-2_1_2_RELEASE/glue:1.2-30
 
 The hierarchy of programs that use WiFi is as follows:
 
-
-|Appilication|
-|API|
-|lwip|
-|WiFi Driver|
++---------------+   
+|  Appilication |   
++---------------+   
+|      API      |   
++---------------+   
+|      lwip     |   
++---------------+   
+| WiFi  Driver  |   
++---------------+   
 
 
 
 [This](https://github.com/d-a-v/W5500lwIP) driver replaces the WiFi driver with an Ethernet driver.
 
-|Appilication|
-|API|
-|lwip|
-|Ethernet Driver|
++---------------+   
+|  Appilication |   
++---------------+   
+|      API      |   
++---------------+   
+|      lwip     |   
++---------------+   
+|Ethernet Driver|   
++---------------+   
 
 
 This repository is a example of using Ethernet with ESP8266.
