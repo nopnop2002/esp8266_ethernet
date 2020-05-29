@@ -71,18 +71,23 @@ By default the W5500 ethernet module is selected.
 
 ```
 #include <W5500lwIP.h>
+Wiznet5500lwIP eth(SPI, CSPIN);
+
 ```
 
 Using W5100:
 
 ```
 #include <W5100lwIP.h>
+Wiznet5100lwIP eth(SPI, CSPIN);
 ```
 
 Using ENC28J60:
 
 ```
 #include <ENC28J60lwIP.h>
+ENC28J60lwIP eth(SPI, CSPIN);
+
 ```
 
 # Limitations
