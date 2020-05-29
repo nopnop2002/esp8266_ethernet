@@ -40,7 +40,7 @@ void setup() {
   SPI.begin();
   SPI.setBitOrder(MSBFIRST);
   SPI.setDataMode(SPI_MODE0);
-  SPI.setFrequency(40000000);
+  SPI.setFrequency(4000000);
 
   eth.setDefault(); // use ethernet for default route
   int present = eth.begin(mac);
