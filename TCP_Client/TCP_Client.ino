@@ -17,7 +17,7 @@ Wiznet5500lwIP eth(SPI, CSPIN);
 //ENC28J60lwIP eth(SPI, CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x04};
 
-#define INTERVAL       5000
+#define INTERVAL       1000
 #define SOCKET_PORT    9876
 #define TIME_OUT       10000
 
