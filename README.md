@@ -25,7 +25,7 @@ The hierarchy of programs that use WiFi is as follows:
 
 
 [This](https://github.com/d-a-v/W5500lwIP) driver replaces the WiFi driver with an Ethernet driver.   
-You can use Ethnernet with only a few changes.   
+You can use Ethnernet with __only a few changes__.   
 
 ```
 +----------------+
