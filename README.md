@@ -62,6 +62,7 @@ You can download from [here](https://github.com/d-a-v/W5500lwIP).
 |MISO|---|D6|
 |MOSI|---|D7|
 |CS|---|D2(*)|
+|RST|---|RESET|
 
 (*) You can change.
 
