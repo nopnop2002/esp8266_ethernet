@@ -39,7 +39,7 @@ You can use Ethnernet with only a few changes.
 +----------------+
 ```
 
-This repository is a example of using Ethernet with ESP8266.
+This repository is a example of using [Ethernet drivers for lwIP on esp8266](https://github.com/d-a-v/W5500lwIP).
 
 # Hardware requiment
 SPI Ethernet module using this chip.
