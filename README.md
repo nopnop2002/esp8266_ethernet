@@ -11,15 +11,15 @@ SDK:2.2.2-dev(38a443e)/Core:2.7.1=20701000/lwIP:STABLE-2_1_2_RELEASE/glue:1.2-30
 The hierarchy of programs that use WiFi is as follows:
 
 ```
-+---------------+
-|  Application  |
-+---------------+
-|  Network-API  |
-+---------------+
-|      lwip     |
-+---------------+
-|  WiFi Driver  |
-+---------------+ 
++----------------+
+|  Application   |
++----------------+
+| Network Object |
++----------------+
+|      lwip      |
++----------------+
+|   WiFi Driver  |
++----------------+ 
 ```
 
 
@@ -28,15 +28,15 @@ The hierarchy of programs that use WiFi is as follows:
 You can use Ethnernet with only a few changes.   
 
 ```
-+---------------+
-|  Application  |
-+---------------+
-|  Network-API  |
-+---------------+
-|      lwip     |
-+---------------+
-|Ethernet Driver|
-+---------------+
++----------------+
+|  Application   |
++----------------+
+| Network Object |
++----------------+
+|      lwip      |
++----------------+
+| Ethernet Driver|
++----------------+
 ```
 
 This repository is a example of using Ethernet with ESP8266.
