@@ -101,9 +101,9 @@ void setup() {
           remoteIp = MDNS.IP(i);
           valid = true;
           break;
-        }
-      }
-    }
+        } // end if
+      } // end for
+    } // end if
     if (valid) break;
   } // endo for
   
