@@ -6,23 +6,18 @@
 #include <SPI.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
-//#include <W5500lwIP.h> // https://github.com/d-a-v/W5500lwIP
-#include <W5100lwIP.h> // https://github.com/d-a-v/W5500lwIP
-//#include <ENC28J60lwIP.h> // https://github.com/d-a-v/W5500lwIP
+#include <W5500lwIP.h> // https://github.com/d-a-v/W5500lwIP
 
 #define CSPIN D2
 
-//Wiznet5500lwIP eth(SPI, CSPIN);
-Wiznet5100lwIP eth(SPI, CSPIN);
-//ENC28J60lwIP eth(SPI, CSPIN);
+Wiznet5500lwIP eth(SPI, CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
 
 #define SERVER_PORT    9876
 
 // Create an instance of the server
 // specify the port to listen on as an argument
-//WiFiServer server(SERVER_PORT);
-WiFiServer server = WiFiServer(SERVER_PORT);
+WiFiServer server(SERVER_PORT);
 
 void setup()
 {
@@ -83,9 +78,11 @@ void setup()
 }
 
 void loop() {
+  char smsg[30];
+  char rmsg[30];
 
   MDNS.update();
- 
+
   // Check if a client has connected
   WiFiClient client = server.available();
   if (!client) {
@@ -97,31 +94,29 @@ void loop() {
   while(!client.available()){
     delay(1);
   }
-  
-  // Read the first line of the request
-  String rmsg = client.readStringUntil('\0');
-  Serial.print(rmsg);
-  client.flush();
 
-  // Prepare the response
-  char smsg[128];
-  memset(smsg,0,sizeof(smsg));
-  for(uint32_t i = 0; i < rmsg.length(); i++) {
-    if(isalpha(rmsg[i])) {
-      smsg[i] = toupper(rmsg[i]);
-    } else {
-      smsg[i] = rmsg[i];
-    } // end if
-  } // end for
+  int size;
+  while((size = client.available()) > 0) {
+    Serial.print("TCP Server Receive Size=");
+    Serial.println(size);
+    size = client.read((uint8_t *)rmsg,size);
+    for(uint32_t i = 0; i < size; i++) {
+      if(isalpha(rmsg[i])) {
+        smsg[i] = toupper(rmsg[i]);
+      } else {
+        smsg[i] = rmsg[i];
+      } // end if
+    } // end for
 
-  Serial.print("->");
-  Serial.println(smsg);
+    client.write(smsg, size);
+    
+    Serial.write((uint8_t *)smsg,size);
+    Serial.write("->");
+    Serial.write((uint8_t *)rmsg,size);
+    Serial.println("");
+  } // end while
 
-  // Send the response to the client
-  client.print(smsg);
-  delay(1);
   Serial.println("Client disonnected");
-
   // The client will actually be disconnected 
   // when the function returns and 'client' object is detroyed
 }
