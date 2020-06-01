@@ -3,7 +3,7 @@
 #include <PubSubClient.h> // https://github.com/knolleary/pubsubclient
 #include <W5500lwIP.h>    // https://github.com/d-a-v/W5500lwIP
 
-#define INTERVAL        1
+#define INTERVAL        1000
 #define MQTT_PORT       1883
 #define MQTT_TOPIC      "/topic/test"     // You can change
 #define MQTT_WILL_TOPIC "/topic/test"     // You can change
@@ -61,7 +61,7 @@ void setup() {
   Serial.println(eth.subnetMask());
   Serial.print("ethernet gateway: ");
   Serial.println(eth.gatewayIP());
-
+  localIP = eth.localIP();
   
   client.setServer(MQTT_SERVER, MQTT_PORT);
   char clientid[20];
@@ -86,9 +86,10 @@ void setup() {
 }
 
 void loop() {
-  static int counter=0;
   static int value = 0;
   char payload[PAYLOAD_SIZE];
+
+  client.loop();
 
   if (Serial.available() > 0) {
     char inChar = Serial.read();
@@ -101,23 +102,18 @@ void loop() {
   if (!client.connected()) {
     errorDisplay("not connect");
   }
-  client.loop();
 
   long now = millis();
-  if (now - lastMillis > 1000) {
+  if (now - lastMillis > INTERVAL) {
     lastMillis = now;
-    counter++;
-    if (counter > INTERVAL) {
-      ++value;
-      snprintf (payload, PAYLOAD_SIZE, "hello world #%ld", value);
-      Serial.print("loalIP:");
-      Serial.print(localIP);
-      Serial.print(" Publish message: ");
-      Serial.println(payload);
-      if (!client.publish(MQTT_TOPIC, payload)) {
-        errorDisplay("publish fail");
-      }
-      counter=0;
+    ++value;
+    snprintf (payload, PAYLOAD_SIZE, "hello world #%ld", value);
+    Serial.print("loalIP:");
+    Serial.print(localIP);
+    Serial.print(" Publish message: ");
+    Serial.println(payload);
+    if (!client.publish(MQTT_TOPIC, payload)) {
+      errorDisplay("publish fail");
     }
   }
 }
