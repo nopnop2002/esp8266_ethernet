@@ -10,7 +10,7 @@
 //#include <W5100lwIP.h> // https://github.com/d-a-v/W5500lwIP
 //#include <ENC28J60lwIP.h> // https://github.com/d-a-v/W5500lwIP
 
-#define CSPIN D2
+#define CSPIN 16
 
 Wiznet5500lwIP eth(SPI, CSPIN);
 //Wiznet5100lwIP eth(SPI, CSPIN);

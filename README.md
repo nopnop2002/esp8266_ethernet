@@ -60,10 +60,10 @@ You can download from [here](https://github.com/d-a-v/W5500lwIP).
 
 |SPI PHY|---|ESP8266|
 |:-:|:-:|:-:|
-|SCK|---|D5|
-|MISO|---|D6|
-|MOSI|---|D7|
-|CS|---|D2(*)|
+|SCK|---|GPIO14|
+|MISO|---|GPIO12|
+|MOSI|---|GPIO13|
+|CS|---|GPIO16(*)|
 |RST|---|RESET|
 
 (*) You can change.

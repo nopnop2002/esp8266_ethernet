@@ -3,7 +3,7 @@
 #include <W5500lwIP.h> // https://github.com/d-a-v/W5500lwIP
 #include <time.h>
 
-#define CSPIN D2
+#define CSPIN 16
 
 Wiznet5500lwIP eth(SPI, CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x04};

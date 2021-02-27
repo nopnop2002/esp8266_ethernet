@@ -9,7 +9,7 @@
 #define MQTT_WILL_MSG   "I am leaving..." // You can change
 #define MQTT_SERVER     "192.168.10.40"
 
-#define CSPIN D2
+#define CSPIN 16
 
 Wiznet5500lwIP eth(SPI, CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
