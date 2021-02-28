@@ -1,6 +1,6 @@
 # esp8266_ethernet
 Example of using SPI Ethernet module with esp8266.   
-Arduino core for ESP8266 uses [lwip](https://savannah.nongnu.org/projects/lwip/) for TCP/IP protocol stack.
+Arduino core for ESP8266 uses [lwip](https://savannah.nongnu.org/projects/lwip/) for TCP/IP protocol stack.   
 The hierarchy of programs that use WiFi is as follows:
 
 ```
@@ -40,7 +40,7 @@ SPI Ethernet module using this chip.
 - Latest of Arduino core for ESP8266.   
 I tested Version 3.0.0.   
 ![](https://img.shields.io/badge/_IMPORTANT-important)  
-Borad Manager does not support this version.   
+You cannot install this version using Borad Manager.   
 You need to install it using git according to [this](https://arduino-esp8266.readthedocs.io/en/latest/installing.html#using-git-version) page.   
 
 # Wireing
