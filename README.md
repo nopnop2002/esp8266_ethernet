@@ -1,13 +1,6 @@
 # esp8266_ethernet
-
-Ethernet example using Ethernet drivers for lwIP on esp8266
-
+Example of using SPI Ethernet module with esp8266.   
 Arduino core for ESP8266 uses [lwip](https://savannah.nongnu.org/projects/lwip/) for TCP/IP protocol stack.
-
-You can check the version of lwip with the following function: Serial.print(ESP.getFullVersion());
-
-SDK:2.2.2-dev(38a443e)/Core:2.7.1=20701000/lwIP:STABLE-2_1_2_RELEASE/glue:1.2-30-g92add50/BearSSL:5c771be
-
 The hierarchy of programs that use WiFi is as follows:
 
 ```
@@ -22,10 +15,8 @@ The hierarchy of programs that use WiFi is as follows:
 +----------------+ 
 ```
 
-
-
-[This](https://github.com/d-a-v/W5500lwIP) driver replaces the WiFi driver with an Ethernet driver.   
-You can use Ethnernet with __only a few changes__.   
+The latest Arduino core supports SPI external Ethernet as standard.   
+The hierarchy of programs that use Ethernet is as follows:
 
 ```
 +----------------+
@@ -39,10 +30,6 @@ You can use Ethnernet with __only a few changes__.
 +----------------+
 ```
 
-This repository is a example of using [Ethernet drivers for lwIP on esp8266](https://github.com/d-a-v/W5500lwIP).   
-__Thanks to d-a-v.__
-
-
 # Hardware requiment
 SPI Ethernet module using this chip.
 - ENC28J60
@@ -51,10 +38,10 @@ SPI Ethernet module using this chip.
 
 # Software requiment
 - Latest of Arduino core for ESP8266.   
-I tested 2.7.1.   
-
-- Ethernet drivers for lwIP on esp8266.   
-You can download from [here](https://github.com/d-a-v/W5500lwIP).
+I tested Version 3.0.0.   
+![](https://img.shields.io/badge/_IMPORTANT-important)  
+Borad Manager does not support this version.   
+You need to install it using git according to [this](https://arduino-esp8266.readthedocs.io/en/latest/installing.html#using-git-version) page.   
 
 # Wireing
 
@@ -70,26 +57,24 @@ You can download from [here](https://github.com/d-a-v/W5500lwIP).
 
 # Selecting the Ethernet module
 
-By default the W5500 ethernet module is selected.
-
 - Using W5500:
 ```
 #include <W5500lwIP.h>
-Wiznet5500lwIP eth(SPI, CSPIN);
+Wiznet5500lwIP eth(CSPIN);
 ```
 ![W5500](https://user-images.githubusercontent.com/6020549/83312712-524abd00-a24e-11ea-9c15-c5ad85022854.JPG)
 
 - Using W5100:
 ```
 #include <W5100lwIP.h>
-Wiznet5100lwIP eth(SPI, CSPIN);
+Wiznet5100lwIP eth(CSPIN);
 ```
 ![W5100](https://user-images.githubusercontent.com/6020549/83312708-4f4fcc80-a24e-11ea-923d-409ddeeee855.JPG)
 
 - Using ENC28J60:
 ```
 #include <ENC28J60lwIP.h>
-ENC28J60lwIP eth(SPI, CSPIN);
+ENC28J60lwIP eth(CSPIN);
 ```
 ![ENC28J60](https://user-images.githubusercontent.com/6020549/83312722-57a80780-a24e-11ea-8ae5-f878071a8a3d.JPG)
 

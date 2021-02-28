@@ -1,20 +1,20 @@
 /*
- *  TCP Client
- *  Connect to _esp8266_wifi_tcp
+ *  Simple TCP Client
+ *  Connect to esp8266_wifi_tcp
  */
  
 #include <SPI.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
-#include <W5500lwIP.h> // https://github.com/d-a-v/W5500lwIP
-//#include <W5100lwIP.h> // https://github.com/d-a-v/W5500lwIP
-//#include <ENC28J60lwIP.h> // https://github.com/d-a-v/W5500lwIP
+#include <W5500lwIP.h>
+//#include <W5100lwIP.h>
+//#include <ENC28J60lwIP.h>
 
 #define CSPIN 16
 
-Wiznet5500lwIP eth(SPI, CSPIN);
-//Wiznet5100lwIP eth(SPI, CSPIN);
-//ENC28J60lwIP eth(SPI, CSPIN);
+Wiznet5500lwIP eth(CSPIN);
+//Wiznet5100lwIP eth(CSPIN);
+//ENC28J60lwIP eth(CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x04};
 
 #define INTERVAL       1000
@@ -72,9 +72,9 @@ void setup() {
     Serial.println("Error setting up MDNS responder!");
   }
 
-  // Find endpoint for _esp8266_wifi_tcp
-  bool valid = false;
-  for(int i=0;i<10;i++) {
+  // Find endpoint for esp8266_wifi_tcp
+  int validRemoteIp = 0;
+  while(1) {
     // Send out query for esp tcp services
     Serial.println("Sending mDNS query");
     int n = MDNS.queryService("esp8266_wifi", "tcp");
@@ -82,7 +82,6 @@ void setup() {
     if (n == 0) {
       Serial.println("no services found");
       delay(1000);
-      continue;
     } else {
       Serial.print(n);
       Serial.println(" service(s) found");
@@ -99,21 +98,15 @@ void setup() {
   
         if (MDNS.port(i) == SOCKET_PORT) {
           remoteIp = MDNS.IP(i);
-          valid = true;
-          break;
+          validRemoteIp++;
         } // end if
       } // end for
     } // end if
-    if (valid) break;
+    if (validRemoteIp != 0) break;
   } // endo for
   
-  if (valid) {
-    Serial.print("remoteIp=");
-    Serial.println(remoteIp);
-  } else {
-    Serial.println("end-piont not found");
-    while(1) delay(100);
-  }
+  Serial.print("remoteIp=");
+  Serial.println(remoteIp);
   
   nextMillis = millis();
 }
@@ -129,10 +122,10 @@ void loop() {
   
   now = millis();
   if ( long(now - nextMillis) > 0) {
-    nextMillis = millis() + INTERVAL;
     Serial.print("Client connect....");
     if (!client.connect(remoteIp, SOCKET_PORT)) {
       Serial.println("failed");
+      ESP.restart();
     } else {
       Serial.println("ok");
       sprintf(smsg,"data from ESP8266 %05d",num);
@@ -144,8 +137,6 @@ void loop() {
       timeout = millis();
       while(client.available() == 0) {
         now = millis();
-//        Serial.println("now="+String(now));
-//        Serial.println("timeout="+String(timeout));
         if (long(now - timeout) > TIME_OUT) {
           rflag = 0;
         }
@@ -171,6 +162,8 @@ void loop() {
       //disconnect client
       Serial.println("Client disconnect");
       client.stop();
+      nextMillis = millis() + INTERVAL;
+
     } // end if
   } // end if
 }

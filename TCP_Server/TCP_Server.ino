@@ -6,11 +6,15 @@
 #include <SPI.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
-#include <W5500lwIP.h> // https://github.com/d-a-v/W5500lwIP
+#include <W5500lwIP.h>
+//#include <W5100lwIP.h>
+//#include <ENC28J60lwIP.h>
 
 #define CSPIN 16
 
-Wiznet5500lwIP eth(SPI, CSPIN);
+Wiznet5500lwIP eth(CSPIN);
+//Wiznet5100lwIP eth(CSPIN);
+//ENC28J60lwIP eth(CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
 
 #define SERVER_PORT    9876
