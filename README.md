@@ -41,7 +41,7 @@ SPI Ethernet module using this chip.
 - git client   
 - python3.x   
 - Latest of Arduino core for ESP8266   
-I tested Version 3.0.0.   
+I tested Version 3.0.0-dev.   
 ![](https://img.shields.io/badge/_IMPORTANT-important)  
 You cannot install this version using Borad Manager.   
 You need to install it using git according to [this](https://arduino-esp8266.readthedocs.io/en/latest/installing.html#using-git-version) page.   
