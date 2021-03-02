@@ -16,6 +16,7 @@ The hierarchy of programs that use WiFi is as follows:
 ```
 
 The latest Arduino core supports SPI external Ethernet as standard.   
+__You don't need any libraries.__   
 The hierarchy of programs that use Ethernet is as follows:
 
 ```
