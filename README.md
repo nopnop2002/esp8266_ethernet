@@ -38,11 +38,14 @@ SPI Ethernet module using this chip.
 - W5500
 
 # Software requiment
-- Arduino core for ESP8266 __V3.0.0__ or later  
+- Arduino core for ESP8266 __V3.0.2__ or later  
 ![](https://img.shields.io/badge/_IMPORTANT-important)  
-You can check the Core version using ESP.getFullVersion.   
-It's mine:   
-`ESP.getFullVersion=SDK:2.2.2-dev(38a443e)/Core:3.0.0=30000000/lwIP:STABLE-2_1_2_RELEASE/glue:1.2-48-g7421258/BearSSL:c0b69df`
+You can check the Core version using ESP.getFullVersion() or ESP.getCoreVersion().   
+This is mine:   
+```
+ESP.getFullVersion=SDK:2.2.2-dev(38a443e)/Core:3.0.2=30002000/lwIP:STABLE-2_1_2_RELEASE/glue:1.2-48-g7421258/BearSSL:6105635
+ESP.getCoreVersion=3.0.2
+```
 
 
 # Wireing
