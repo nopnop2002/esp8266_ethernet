@@ -84,5 +84,5 @@ ENC28J60lwIP eth(CSPIN);
 ![ENC28J60](https://user-images.githubusercontent.com/6020549/83312722-57a80780-a24e-11ea-8ae5-f878071a8a3d.JPG)
 
 # Limitations
-UDP receive is currently not working.   
+NTP Client is currently not working.   
 This is probably not a driver issue, but a core library issue.   

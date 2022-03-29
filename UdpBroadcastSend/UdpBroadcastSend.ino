@@ -57,7 +57,7 @@ void setup() {
   Serial.print("ethernet gateway: ");
   Serial.println(eth.gatewayIP());
 
-  Serial.println("Starting UDP");
+  Serial.println("Starting UDP Send");
   udp.begin(LOCAL_PORT);
 }
 
