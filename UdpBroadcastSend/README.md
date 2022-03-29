@@ -1,5 +1,10 @@
 # UDP Broadcast Send
-Receiver using python.
+Receiver using python.   
+Using Limited broadcast address.   
+Limited broadcast addresses can't cross routers.   
+__Note:__   
+If you use a direct broadcast address, you will need to change <broadcast>.   
+Direct broadcast addresses can cross routers.   
 ```
 import select
 import socket
