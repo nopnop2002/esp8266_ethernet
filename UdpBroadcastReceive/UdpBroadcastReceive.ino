@@ -17,6 +17,7 @@ byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x04};
 WiFiUDP Udp;
 
 void setup() {
+  delay(1000);
   Serial.begin(115200);
   Serial.println();
   Serial.print(ESP.getFullVersion());

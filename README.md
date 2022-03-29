@@ -86,3 +86,30 @@ ENC28J60lwIP eth(CSPIN);
 # Limitations
 NTP Client is currently not working.   
 This is probably not a driver issue, but a core library issue.   
+
+
+# Using platformIO
+```
+$ git clone https://github.com/nopnop2002/esp8266_ethernet
+
+$ cd esp8266_ethernet/connectEthernet/
+
+$ pio init -b d1_mini
+
+$ cp connectEthernet.ino src/
+
+$ pio run -t upload && pio device monitor -b 115200
+
+==================================== [SUCCESS] Took 25.50 seconds ====================================
+--- Available filters and text transformations: colorize, debug, default, direct, esp8266_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+
+SDK:2.2.2-dev(38a443e)/Core:3.0.2=30002000/lwIP:STABLE-2_1_2_RELEASE/glue:1.2-48-g7421258/BearSSL:6105635
+connecting ethernet..
+ethernet ip address: 192.168.10.128
+ethernet subnetMask: 255.255.255.0
+ethernet gateway: 192.168.10.1
+```
+

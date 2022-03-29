@@ -26,7 +26,7 @@ unsigned long lastSendPacketTime = 0;
 WiFiUDP udp;
 
 void setup() {
-
+  delay(1000);
   Serial.begin(115200);
   Serial.println();
   Serial.print(ESP.getFullVersion());
@@ -67,7 +67,7 @@ void loop() {
     lastSendPacketTime = now;
     udp.beginPacket("255.255.255.255", REMOTE_PORT);
     byte packetBuffer[64];
-    sprintf((char *)packetBuffer, "Hello World! %d", millis());
+    sprintf((char *)packetBuffer, "Hello World! %ld", millis());
     size_t packetSize = strlen((char*)packetBuffer);
     udp.write(packetBuffer, packetSize);
     udp.endPacket();

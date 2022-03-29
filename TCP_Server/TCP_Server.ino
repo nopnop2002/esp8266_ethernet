@@ -1,7 +1,7 @@
 /*
- *  TCP Server
- *  End-point name is _esp8266_wifi_tcp
- */
+    TCP Server
+    End-point name is _esp8266_wifi_tcp
+*/
 
 #include <SPI.h>
 #include <ESP8266WiFi.h>
@@ -23,8 +23,10 @@ byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
 // specify the port to listen on as an argument
 WiFiServer server(SERVER_PORT);
 
-void setup()
-{
+//#define STATIC
+
+void setup() {
+  delay(1000);
   Serial.begin(115200);
   Serial.println();
   Serial.print(ESP.getFullVersion());
@@ -36,12 +38,20 @@ void setup()
   SPI.setFrequency(4000000);
 
   eth.setDefault(); // use ethernet for default route
+
+#ifdef STATIC
+  IPAddress ip(192,168,10,130);   
+  IPAddress gateway(192,168,10,1);   
+  IPAddress subnet(255,255,255,0);   
+  eth.config(ip, gateway, subnet);
+#endif
+
   int present = eth.begin(mac);
   if (!present) {
     Serial.println("no ethernet hardware present");
-    while(1);
+    while (1);
   }
-  
+
   Serial.print("connecting ethernet");
   while (!eth.connected()) {
     Serial.print(".");
@@ -92,20 +102,20 @@ void loop() {
   if (!client) {
     return;
   }
-  
+
   // Wait until the client sends some data
   Serial.println("new client");
-  while(!client.available()){
+  while (!client.available()) {
     delay(1);
   }
 
   int size;
-  while((size = client.available()) > 0) {
+  while ((size = client.available()) > 0) {
     Serial.print("TCP Server Receive Size=");
     Serial.println(size);
-    size = client.read((uint8_t *)rmsg,size);
-    for(uint32_t i = 0; i < size; i++) {
-      if(isalpha(rmsg[i])) {
+    size = client.read((uint8_t *)rmsg, size);
+    for (uint32_t i = 0; i < size; i++) {
+      if (isalpha(rmsg[i])) {
         smsg[i] = toupper(rmsg[i]);
       } else {
         smsg[i] = rmsg[i];
@@ -113,14 +123,14 @@ void loop() {
     } // end for
 
     client.write(smsg, size);
-    
-    Serial.write((uint8_t *)smsg,size);
+
+    Serial.write((uint8_t *)smsg, size);
     Serial.write("->");
-    Serial.write((uint8_t *)rmsg,size);
+    Serial.write((uint8_t *)rmsg, size);
     Serial.println("");
   } // end while
 
   Serial.println("Client disonnected");
-  // The client will actually be disconnected 
+  // The client will actually be disconnected
   // when the function returns and 'client' object is detroyed
 }
