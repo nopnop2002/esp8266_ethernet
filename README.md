@@ -88,7 +88,7 @@ NTP Client is currently not working.
 This is probably not a driver issue, but a core library issue.   
 
 
-# Using platformIO
+# Using PlatformIO
 ```
 $ git clone https://github.com/nopnop2002/esp8266_ethernet
 
