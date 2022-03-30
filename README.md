@@ -153,7 +153,6 @@ void setup() {
 }
 
 void loop() {
-  // You can use WiFi Object
 }
 ```
 
@@ -206,7 +205,6 @@ void setup() {
 }
 
 void loop() {
-  // You can use eth Object
 }
 ```
 
