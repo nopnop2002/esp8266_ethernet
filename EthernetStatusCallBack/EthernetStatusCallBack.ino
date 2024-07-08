@@ -15,6 +15,7 @@ byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
 ESP8266Timer ITimer;
 
 void timer_task() {
+  Serial.print("eth.status=");
   Serial.println(eth.status());
 }
 
