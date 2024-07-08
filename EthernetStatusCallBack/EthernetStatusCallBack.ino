@@ -15,12 +15,7 @@ byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
 ESP8266Timer ITimer;
 
 void timer_task() {
-  if (eth.status() == WL_CONNECTED) {
-    Serial.println("Ethernet Connected!");
-  }
-  else {
-    Serial.println("Ethernet Not Connected!");
-  }  
+  Serial.println(eth.status());
 }
 
 void setup() {
