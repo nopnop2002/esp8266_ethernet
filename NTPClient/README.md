@@ -1,6 +1,6 @@
 # NTPClient   
 Get time from a NTP server and keep it in sync.   
-This project uses NTPClient.
+This project uses NTPClient.   
 https://www.arduino.cc/reference/en/libraries/ntpclient/
 
 
