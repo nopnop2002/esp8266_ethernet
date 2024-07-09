@@ -2,6 +2,13 @@
 Connect Ethernet and WiFi.   
 You can get two IP addresses: Ethernet and WiFi.   
 
+You need to adapt this to your environment.   
+```
+const char* SSID = "ssid_of_your_router";
+const char* PASSWORD = "password_of_your_router";
+```
+
+
 # Screen Shot   
 ```
 SDK:2.2.2-dev(38a443e)/Core:3.1.2=30102000/lwIP:STABLE-2_1_3_RELEASE/glue:1.2-65-g06164fb/BearSSL:b024386
