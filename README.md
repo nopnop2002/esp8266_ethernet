@@ -131,7 +131,7 @@ void setup() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(SSID, PASSWORD);
   while (1) {
-    status = WiFi.status();
+    uint8_t status = WiFi.status();
     Serial.print("status=");
     Serial.println(status);
     if (status == WL_CONNECTED) break;
