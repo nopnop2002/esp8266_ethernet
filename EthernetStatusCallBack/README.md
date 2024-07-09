@@ -6,6 +6,9 @@ https://www.arduino.cc/reference/en/libraries/esp8266timerinterrupt/
 
 
 # Screen Shot   
+status=3:Connected   
+status=7:Not Connected   
+
 ```
 SDK:2.2.2-dev(38a443e)/Core:3.1.2=30102000/lwIP:STABLE-2_1_3_RELEASE/glue:1.2-65-g06164fb/BearSSL:b024386
 connecting ethernet...
