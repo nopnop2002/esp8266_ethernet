@@ -64,7 +64,8 @@ void setup(){
   // GMT +8 = 28800
   // GMT -1 = -3600
   // GMT 0 = 0
-  timeClient.setTimeOffset(0);
+  int timeOffset = 9 * 3600; // JST-9
+  timeClient.setTimeOffset(timeOffset);
 }
 
 void loop() {
