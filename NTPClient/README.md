@@ -3,6 +3,10 @@ Get time from a NTP server and keep it in sync.
 This project uses NTPClient.   
 https://www.arduino.cc/reference/en/libraries/ntpclient/
 
+You need to adapt this to your environment.   
+```
+int timeOffset = 9 * 3600; // JST-9
+```
 
 # Screen Shot   
 ```
