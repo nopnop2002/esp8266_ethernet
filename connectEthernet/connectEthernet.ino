@@ -45,5 +45,13 @@ void setup() {
 }
 
 void loop() {
-
-} 
+  //Serial.print("eth.status=");
+  //Serial.println(eth.status());
+  if (eth.status() == WL_CONNECTED) {
+    Serial.println("Ethernet Connected!");
+  }
+  else {
+    Serial.println("Ethernet Not Connected!");
+  }
+  delay(1000);
+}
