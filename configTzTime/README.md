@@ -1,6 +1,11 @@
 # configTzTime
 Set the NTP server time to RTC.   
 
+You need to adapt this to your environment.   
+```
+#define TIME_ZONE "JST-9"
+```
+
 # Screen Shot
 ```
 SDK:2.2.2-dev(38a443e)/Core:3.0.2=30002000/lwIP:STABLE-2_1_2_RELEASE/glue:1.2-48-g7421258/BearSSL:6105635
