@@ -1,5 +1,5 @@
-# EthernetStatus   
-Get current Ethernet status.   
+# connectEthernet   
+Connect Ehernet and Get current Ethernet status.   
 
 # Screen Shot   
 ```
