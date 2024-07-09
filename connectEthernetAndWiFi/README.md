@@ -1,6 +1,6 @@
 # connectEthernetAndWiFi   
 Connect Ethernet and WiFi.   
-
+You can get two IP addresses: Ethernet and WiFi.   
 
 # Screen Shot   
 ```
