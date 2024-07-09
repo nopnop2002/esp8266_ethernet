@@ -56,9 +56,8 @@ void setup(){
   Serial.print("ethernet gateway: ");
   Serial.println(eth.gatewayIP());
 
-
-  Serial.println("Starting NTP Cient");
   // Initialize a NTPClient to get time
+  Serial.println("Starting NTP Cient");
   timeClient.begin();
   // Set offset time in seconds to adjust for your timezone, for example:
   // GMT +1 = 3600
