@@ -68,18 +68,8 @@ void setup() {
   server.begin();
   Serial.println("Server Start. Wait for Client");
 
-
-  char myDomainName[16] = {0};
-  sprintf(myDomainName, "ESP_%06X", ESP.getChipId());
-  Serial.print("myDomainName: ");
-  Serial.println(myDomainName);
-
-  // Set up mDNS responder:
-  // - first argument is the domain name, in this example
-  //   the fully-qualified domain name is "esp8266.local"
-  // - second argument is the IP address to advertise
-  //   we send our IP address on the WiFi network
-  if (!MDNS.begin(myDomainName)) {
+  // Start the mDNS responder for esp8266.local
+  if (!MDNS.begin("esp8266")) {
     Serial.println("Error setting up MDNS responder!");
     while (1) {
       delay(1000);
@@ -87,7 +77,7 @@ void setup() {
   }
   // Add service to MDNS-SD
   Serial.println("mDNS responder started");
-  MDNS.addService("esp8266_wifi", "tcp", SERVER_PORT);
+  MDNS.addService("http", "tcp", SERVER_PORT);
 
 }
 
