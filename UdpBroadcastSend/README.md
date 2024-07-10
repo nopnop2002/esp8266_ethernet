@@ -6,29 +6,37 @@ __Note:__
 If you use a direct broadcast address, you will need to change <broadcast>.   
 Direct broadcast addresses can cross routers.   
 ```
+#!/usr/bin/python
+#-*- encoding: utf-8 -*-
+import argparse
 import select
 import socket
 import signal
 
 def handler(signal, frame):
-  global flag
-  print('handler')
-  flag = False
-
-def main():
-  global flag
-  s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-  s.bind(('<broadcast>', 9876))
-  s.setblocking(0)
-  flag = True
-
-  while flag:
-    result = select.select([s],[],[])
-    msg = result[0][0].recv(1024)
-    if (type(msg) is bytes):
-      msg=msg.decode('utf-8')
-    print(msg)
+    global running
+    print('handler')
+    running = False
 
 if __name__ == "__main__":
-  main()
+    signal.signal(signal.SIGINT, handler)
+    running = True
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port', type=int, help="UDP Port", default=9876)
+    args = parser.parse_args()
+    print("args.port={}".format(args.port))
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind(('<broadcast>', args.port))
+    sock.setblocking(0)
+
+    while running:
+        result = select.select([sock],[],[])
+        msg = result[0][0].recv(1024)
+        if (type(msg) is bytes):
+            msg=msg.decode('utf-8')
+        print(msg)
+
+    sock.close()
 ```
