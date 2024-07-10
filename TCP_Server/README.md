@@ -19,7 +19,7 @@ if __name__ == "__main__":
     running = True
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--host', help="TCP Host", default="esp8266.local")
+    parser.add_argument('--host', help="TCP Host", default="esp8266-server.local")
     parser.add_argument('--port', type=int, help="TCP Port", default=9876)
     args = parser.parse_args()
     print("args.host={}".format(args.host))
