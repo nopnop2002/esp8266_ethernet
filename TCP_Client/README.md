@@ -11,9 +11,11 @@ $ python3 -m pip install zeroconf
 #!/usr/bin/python
 #-*- encoding: utf-8 -*-
 import argparse
+import sys
 import socket
 import netifaces
 import signal
+import subprocess
 
 from zeroconf import IPVersion, ServiceInfo, Zeroconf
 
@@ -27,17 +29,29 @@ if __name__ == "__main__":
     running = True
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', help="Ethernet device", default="eth0")
+    parser.add_argument('--interface', help="Ethernet interface", default="eth0")
     parser.add_argument('--port', type=int, help="TCP Port", default=9876)
     parser.add_argument("--debug", action="store_true")
     args = parser.parse_args()
-    print("args.device={}".format(args.device))
+    print("args.interface={}".format(args.interface))
     print("args.port={}".format(args.port))
 
     if args.debug:
         logging.getLogger("zeroconf").setLevel(logging.DEBUG)
 
-    ip_addr = netifaces.ifaddresses(args.device)[netifaces.AF_INET][0]['addr']
+    try:
+        ip_addr = netifaces.ifaddresses(args.interface)[netifaces.AF_INET][0]['addr']
+    except:
+        print("{} not found.". format(args.interface))
+        print("You must specify a valid interface name.")
+        command = "ifconfig"
+        p = subprocess.run(command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            shell=True
+            )
+        print(p.stdout.decode("utf-8", "ignore"))
+        sys.exit()
     print("ip_addr={}".format(ip_addr))
 
     info = ServiceInfo(
