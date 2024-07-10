@@ -1,6 +1,7 @@
 /*
     TCP Server
-    mDNS host name is esp8266.local
+    mDNS host name is "esp8266-server.local"
+    Service name is "esp8266-server._esp._tcp.local"
 */
 
 #include <SPI.h>
