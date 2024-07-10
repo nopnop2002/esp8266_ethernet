@@ -1,6 +1,6 @@
 # TCP Client
 TCP Server using Python & zeroconf.   
-You need to install zeroconf library.   
+You need to install zeroconf mDNS library.   
 ```
 $ python3 -m pip install zeroconf
 ```
