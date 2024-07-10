@@ -17,9 +17,9 @@ Wiznet5500lwIP eth(CSPIN);
 //ENC28J60lwIP eth(CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x04};
 
-#define INTERVAL       1000
-#define SOCKET_PORT    9876
-#define TIME_OUT       10000
+#define INTERVAL    1000
+#define TCP_PORT    9876
+#define TIME_OUT    10000
 
 IPAddress remoteIp;
 
@@ -69,7 +69,7 @@ void setup() {
   while(1) {
     // Send out query for esp tcp services
     Serial.println("Sending mDNS query");
-    int n = MDNS.queryService("esp", "tcp");
+    int n = MDNS.queryService("http", "tcp");
     Serial.println("mDNS query done");
     if (n == 0) {
       Serial.println("no services found");
@@ -88,7 +88,7 @@ void setup() {
         Serial.print(MDNS.port(i));
         Serial.println(")");
   
-        if (MDNS.port(i) == SOCKET_PORT) {
+        if (MDNS.port(i) == TCP_PORT) {
           remoteIp = MDNS.IP(i);
           validRemoteIp++;
         } // end if
@@ -114,10 +114,12 @@ void loop() {
   
   now = millis();
   if ( long(now - nextMillis) > 0) {
-    Serial.print("Client connect....");
-    if (!client.connect(remoteIp, SOCKET_PORT)) {
+    Serial.print("Client connect to ");
+    Serial.print(remoteIp);
+    Serial.print(" .....");
+    if (!client.connect(remoteIp, TCP_PORT)) {
       Serial.println("failed");
-      ESP.restart();
+      while(1);
     } else {
       Serial.println("ok");
       sprintf(smsg,"data from ESP8266 %05d",num);
@@ -145,7 +147,7 @@ void loop() {
           Serial.println(size);
           size = client.read((uint8_t *)rmsg,size);
           Serial.write((uint8_t *)smsg,size);
-          Serial.write("->");
+          Serial.write("-->");
           Serial.write((uint8_t *)rmsg,size);
           Serial.println("");
         } // end while
