@@ -1,6 +1,6 @@
 /*
     TCP Server
-    End-point name is esp8266.local
+    mDNS host name is esp8266.local
 */
 
 #include <SPI.h>
