@@ -68,8 +68,8 @@ void setup() {
   server.begin();
   Serial.println("Server Start. Wait for Client");
 
-  // Start the mDNS responder for esp8266.local
-  if (!MDNS.begin("esp8266")) {
+  // Start the mDNS responder for esp8266-server.local
+  if (!MDNS.begin("esp8266-server")) {
     Serial.println("Error setting up MDNS responder!");
     while (1) {
       delay(1000);
@@ -77,7 +77,7 @@ void setup() {
   }
   // Add service to MDNS-SD
   Serial.println("mDNS responder started");
-  MDNS.addService("http", "tcp", SERVER_PORT);
+  MDNS.addService("esp", "tcp", SERVER_PORT);
 
 }
 
