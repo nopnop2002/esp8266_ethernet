@@ -1,6 +1,6 @@
 /*
     TCP Server
-    End-point name is _esp8266_wifi_tcp
+    End-point name is esp8266.local
 */
 
 #include <SPI.h>
