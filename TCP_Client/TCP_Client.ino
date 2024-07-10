@@ -119,7 +119,9 @@ void loop() {
     Serial.print(" .....");
     if (!client.connect(remoteIp, TCP_PORT)) {
       Serial.println("failed");
-      while(1);
+      while(1) {
+        delay(1);
+      }
     } else {
       Serial.println("ok");
       sprintf(smsg,"data from ESP8266 %05d",num);
