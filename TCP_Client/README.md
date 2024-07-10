@@ -27,16 +27,17 @@ if __name__ == "__main__":
     running = True
 
     parser = argparse.ArgumentParser()
+    parser.add_argument('--device', help="Ethernet device", default="eth0")
     parser.add_argument('--port', type=int, help="TCP Port", default=9876)
     parser.add_argument("--debug", action="store_true")
     args = parser.parse_args()
+    print("args.device={}".format(args.device))
+    print("args.port={}".format(args.port))
 
     if args.debug:
         logging.getLogger("zeroconf").setLevel(logging.DEBUG)
-    print("args.port={}".format(args.port))
 
-    desc = {"path": "/~paulsm/"}
-    ip_addr = netifaces.ifaddresses("enp2s0")[netifaces.AF_INET][0]['addr']
+    ip_addr = netifaces.ifaddresses(args.device)[netifaces.AF_INET][0]['addr']
     print("ip_addr={}".format(ip_addr))
 
     info = ServiceInfo(
@@ -44,7 +45,6 @@ if __name__ == "__main__":
         "TCP Server._http._tcp.local.",
         addresses=[socket.inet_aton(ip_addr)],
         port=args.port,
-        #properties=desc,
         server="esp8266-server.local.",
     )
 
