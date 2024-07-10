@@ -115,18 +115,18 @@ void loop() {
     Serial.println(size);
     size = client.read((uint8_t *)rmsg, size);
     for (uint32_t i = 0; i < size; i++) {
-      if (isalpha(rmsg[i])) {
+      if (islower(rmsg[i])) {
         smsg[i] = toupper(rmsg[i]);
       } else {
-        smsg[i] = rmsg[i];
+        smsg[i] = tolower(rmsg[i]);
       } // end if
     } // end for
 
     client.write(smsg, size);
 
-    Serial.write((uint8_t *)smsg, size);
-    Serial.write("->");
     Serial.write((uint8_t *)rmsg, size);
+    Serial.write("->");
+    Serial.write((uint8_t *)smsg, size);
     Serial.println("");
   } // end while
 
