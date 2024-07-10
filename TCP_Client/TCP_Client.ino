@@ -1,6 +1,6 @@
 /*
  *  Simple TCP Client
- *  Connect to esp8266_wifi_tcp
+ *  Connect to esp8266-server._esp._tcp.local
  */
  
 #include <SPI.h>
@@ -59,25 +59,17 @@ void setup() {
   Serial.print("ethernet gateway: ");
   Serial.println(eth.gatewayIP());
 
-  char myDomainName[16] = {0};
-  sprintf(myDomainName, "ESP_%06X", ESP.getChipId());
-  Serial.print("myDomainName: ");
-  Serial.println(myDomainName);
-  // Set up mDNS responder:
-  // - first argument is the domain name, in this example
-  //   the fully-qualified domain name is "esp8266.local"
-  // - second argument is the IP address to advertise
-  //   we send our IP address on the WiFi network
-  if (!MDNS.begin(myDomainName)) {
+  // Start the mDNS responder for esp8266-client.local
+  if (!MDNS.begin("esp8266-client")) {
     Serial.println("Error setting up MDNS responder!");
   }
 
-  // Find endpoint for esp8266_wifi_tcp
+  // Find endpoint for esp tcp
   int validRemoteIp = 0;
   while(1) {
     // Send out query for esp tcp services
     Serial.println("Sending mDNS query");
-    int n = MDNS.queryService("esp8266_wifi", "tcp");
+    int n = MDNS.queryService("esp", "tcp");
     Serial.println("mDNS query done");
     if (n == 0) {
       Serial.println("no services found");
