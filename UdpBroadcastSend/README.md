@@ -29,14 +29,18 @@ if __name__ == "__main__":
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(('<broadcast>', args.port))
-    sock.setblocking(0)
+    sock.setblocking(False)
 
     while running:
-        result = select.select([sock],[],[])
-        msg = result[0][0].recv(1024)
-        if (type(msg) is bytes):
-            msg=msg.decode('utf-8')
-        print(msg)
+        # With 1 second timeout
+        result = select.select([sock],[],[], 1)
+        #print("result[0]={}".format(result[0]))
+        # Not timeout
+        if (len(result[0]) != 0):
+            msg = result[0][0].recv(1024)
+            if (type(msg) is bytes):
+                msg=msg.decode('utf-8')
+            print(msg)
 
     sock.close()
 ```
