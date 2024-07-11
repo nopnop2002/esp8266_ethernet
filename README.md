@@ -206,4 +206,5 @@ void loop() {
 }
 ```
 
-
+# Other examples   
+https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi/examples
