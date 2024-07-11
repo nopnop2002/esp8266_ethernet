@@ -6,10 +6,10 @@
 //#include <ENC28J60lwIP.h>
 
 #define MQTT_PORT       1883
-#define MQTT_TOPIC      "#"               // You can change
+#define MQTT_TOPIC      "/topic/test/#"   // You can change
 #define MQTT_WILL_TOPIC "/topic/test"     // You can change
 #define MQTT_WILL_MSG   "I am leaving..." // You can change
-#define MQTT_SERVER     "192.168.10.40"
+#define MQTT_SERVER     "broker.emqx.io"
 
 #define CSPIN 16
 
