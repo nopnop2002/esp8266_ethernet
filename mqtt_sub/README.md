@@ -16,5 +16,5 @@ do
     sleep 1
 done
 
-./mqtt_pub.sh
+$ ./mqtt_pub.sh
 ```
