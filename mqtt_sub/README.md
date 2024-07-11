@@ -15,4 +15,6 @@ do
     count=$((++count))
     sleep 1
 done
+
+./mqtt_pub.sh
 ```
