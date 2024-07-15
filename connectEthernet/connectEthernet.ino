@@ -6,6 +6,8 @@
 
 #define CSPIN 16
 
+//#define STATIC
+
 Wiznet5500lwIP eth(CSPIN);
 //Wiznet5100lwIP eth(CSPIN);
 //ENC28J60lwIP eth(CSPIN);
@@ -24,6 +26,16 @@ void setup() {
   SPI.setFrequency(4000000);
 
   eth.setDefault(); // use ethernet for default route
+
+#ifdef STATIC
+  IPAddress ip(192,168,10,130);   
+  IPAddress gateway(192,168,10,1);   
+  IPAddress subnet(255,255,255,0);
+  IPAddress dns1(8,8,8,8);
+  IPAddress dns2(8,8,4,4);
+  eth.config(ip, gateway, subnet, dns1, dns2);
+#endif
+  
   int present = eth.begin(mac);
   if (!present) {
     Serial.println("no ethernet hardware present");
