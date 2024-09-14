@@ -9,7 +9,7 @@ Enable here.
 
 
 # Screen Shot   
-Detected when the Ethernet cable is unplugged.   
+Detects that the Ethernet cable has been unplugged.
 ```
 SDK:2.2.2-dev(38a443e)/Core:3.1.2=30102000/lwIP:STABLE-2_1_3_RELEASE/glue:1.2-65-g06164fb/BearSSL:b024386
 connecting ethernet...
