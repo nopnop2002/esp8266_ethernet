@@ -7,17 +7,22 @@
 
 #define CSPIN 16
 
+//Uncomment if using Directed broadcast address
+//#define DIRECT
+
 Wiznet5500lwIP eth(CSPIN);
 //Wiznet5100lwIP eth(CSPIN);
 //ENC28J60lwIP eth(CSPIN);
 byte mac[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
-
 
 // local port to listen for UDP packets
 #define LOCAL_PORT      8888
 
 // remote port to send for UDP packets
 #define REMOTE_PORT     9876
+
+// remote address to send for UDP packets
+char remote_address[64];
 
 // Time of last packet transmission(ms)
 unsigned long lastSendPacketTime = 0;
@@ -57,6 +62,17 @@ void setup() {
   Serial.print("ethernet gateway: ");
   Serial.println(eth.gatewayIP());
 
+  strcpy(remote_address, "255.255.255.255");
+  #ifdef DIRECT
+  //Serial.println(eth.localIP()[0]);
+  //Serial.println(eth.localIP()[1]);
+  //Serial.println(eth.localIP()[2]);
+  sprintf(remote_address, "%d.%d.%d.255", eth.localIP()[0], eth.localIP()[1], eth.localIP()[2]);
+  #endif
+  
+  Serial.print("remote_address=[");
+  Serial.print(remote_address);
+  Serial.println("]");
   Serial.println("Starting UDP Send");
   udp.begin(LOCAL_PORT);
 }
@@ -65,7 +81,7 @@ void loop() {
   long now = millis();
   if (now - lastSendPacketTime > 1000) { // 5 seconds passed
     lastSendPacketTime = now;
-    udp.beginPacket("255.255.255.255", REMOTE_PORT);
+    udp.beginPacket(remote_address, REMOTE_PORT);
     byte packetBuffer[64];
     sprintf((char *)packetBuffer, "Hello World! %ld", millis());
     size_t packetSize = strlen((char*)packetBuffer);
