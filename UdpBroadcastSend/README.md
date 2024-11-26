@@ -2,12 +2,16 @@
 Receiver using python.   
 Using Limited broadcast address.   
 Limited broadcast addresses can't cross routers.   
-__Note:__   
+
+__Note on using directed broadcast address__   
 If you use a directed broadcast address, Uncomment this line.   
 Directed broadcast addresses can cross routers.   
 ```
 //#define DIRECT
 ```
+
+__Notes on using staic ip__   
+When using staic ip, use Directed broadcast address instead of Limited broadcast address.
 
 
 # UDP Broadcast Receiver using python
