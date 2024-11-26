@@ -11,8 +11,7 @@ Directed broadcast addresses can cross routers.
 ```
 
 __Notes on using staic ip__   
-When using staic ip, use Directed broadcast address instead of Limited broadcast address.
-
+If you use a static IP, use Directed broadcast address instead of Limited broadcast address.   
 
 # UDP Broadcast Receiver using python
 ```
