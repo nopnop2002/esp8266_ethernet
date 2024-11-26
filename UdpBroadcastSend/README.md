@@ -7,6 +7,9 @@ Directed broadcast addresses can cross routers.
 //#define DIRECT
 ```
 
+Limited broadcast address is 255.255.255.255.   
+Directed broadcast address is like 192.168.10.255, only the last octet is 255.   
+
 __Notes on using staic ip__   
 If you use a static IP, use Directed broadcast address instead of Limited broadcast address.   
 
