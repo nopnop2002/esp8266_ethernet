@@ -1,9 +1,6 @@
 # UDP Broadcast Send
-Receiver using python.   
-Using Limited broadcast address.   
+This project uses Limited broadcast address by default.
 Limited broadcast addresses can't cross routers.   
-
-__Note on using directed broadcast address__   
 If you use a directed broadcast address, Uncomment this line.   
 Directed broadcast addresses can cross routers.   
 ```
