@@ -31,13 +31,13 @@ The hierarchy of programs that use Ethernet is as follows:
 +----------------+
 ```
 
-# Hardware requiment
+# Hardware requirements
 SPI Ethernet module using this chip.
 - ENC28J60
 - W5100
 - W5500
 
-# Software requiment
+# Software requirements
 - Arduino core for ESP8266 __V3.0.2__ or later  
 ![](https://img.shields.io/badge/_IMPORTANT-important)  
 You can check the Core version using ESP.getFullVersion() or ESP.getCoreVersion().   
